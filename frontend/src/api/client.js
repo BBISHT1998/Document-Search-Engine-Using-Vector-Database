@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API_BASE ='https://docsearch-baegbbcsenhcfrg8.centralindia-01.azurewebsites.net' ///api/v1
+const API_BASE ='https://docsearch-baegbbcsenhcfrg8.centralindia-01.azurewebsites.net/api/v1' 
 
 const client = axios.create({
   baseURL: API_BASE,
