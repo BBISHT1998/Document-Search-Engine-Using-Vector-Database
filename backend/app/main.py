@@ -68,12 +68,10 @@ app = FastAPI(
 # ─── CORS ─────────────────────────────────────────────────────────────────────
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
+        allow_origins=[
         settings.frontend_url,
         "http://localhost:5173",
-        "http://127.0.0.1:5173",
-        "http://localhost:3000",
-        "http://127.0.0.1:3000",
+        "https://docsear-gzgxf9epcedwc9c8.centralindia-01.azurewebsites.net",
     ],
     allow_credentials=True,
     allow_methods=["*"],

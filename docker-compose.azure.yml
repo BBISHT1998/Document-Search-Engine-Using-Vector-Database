@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  backend:
+    # Replace <your-registry-name> with the name of your Azure Container Registry
+    image: <your-registry-name>.azurecr.io/docsearch-backend:latest
+    container_name: docsearch-backend
+    ports:
+      - "8000:8000"
+    environment:
+      # FRONTEND_URL is the public URL of your Azure Web App once created
+      - FRONTEND_URL=https://${APP_SERVICE_NAME}.azurewebsites.net
+      - DEBUG=false
+    volumes:
+      # ${WEBAPP_STORAGE_HOME} is a built-in variable in Azure App Service for persistent storage
+      - ${WEBAPP_STORAGE_HOME}/data:/app/data
+    restart: always
+
+  frontend:
+    image: <your-registry-name>.azurecr.io/docsearch-frontend:latest
+    container_name: docsearch-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: always
